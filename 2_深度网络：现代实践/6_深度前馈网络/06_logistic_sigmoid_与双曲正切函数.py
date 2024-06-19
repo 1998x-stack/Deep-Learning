@@ -1,19 +1,12 @@
 # 06_logistic sigmoid 与双曲正切函数
-
-
 """
-
 Lecture: 2_深度网络：现代实践/6_深度前馈网络
 Content: 06_logistic sigmoid 与双曲正切函数
-
 """
-
-
 import torch
 import torch.nn as nn
 import torch.optim as optim
 import numpy as np
-
 # 定义神经网络模型
 class SimpleNN(nn.Module):
     def __init__(self, activation='sigmoid'):
@@ -25,27 +18,21 @@ class SimpleNN(nn.Module):
             self.activation = nn.Tanh()
         self.fc2 = nn.Linear(2, 1)
         self.output = nn.Sigmoid()  # 假设是一个二分类问题
-
     def forward(self, x):
         x = self.activation(self.fc1(x))
         x = self.fc2(x)
         return self.output(x)
-
 # 初始化模型
 model = SimpleNN(activation='tanh')
-
 # 定义损失函数和优化器
 criterion = nn.BCELoss()
 optimizer = optim.SGD(model.parameters(), lr=0.1)
-
 # 准备数据
 X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
 y = np.array([[0], [1], [1], [0]])
-
 # 训练模型
 epochs = 10000
 losses = []
-
 for epoch in range(epochs):
     # 前向传播
     outputs = model(torch.tensor(X, dtype=torch.float))
@@ -59,7 +46,6 @@ for epoch in range(epochs):
     
     if (epoch+1) % 1000 == 0:
         print(f'Epoch [{epoch+1}/{epochs}], Loss: {loss.item():.4f}')
-
 # 评估模型
 with torch.no_grad():
     predicted = model(torch.tensor(X, dtype=torch.float)).round()

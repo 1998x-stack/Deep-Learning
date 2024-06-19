@@ -360,11 +360,9 @@ structure = {
     "4_参考文献": [],
     "5_术语": []
 }
-
 import os
 import json
 from typing import Union, Dict, List, Any
-
 def create_directories_and_files(
     base_path: str, 
     structure: Dict[str, Any], 
@@ -374,35 +372,27 @@ def create_directories_and_files(
 ):
     
     """
-
         根据给定的目录结构创建目录和文件，并生成 README.md 文件。
-
         Args:
             base_path (str): 根目录路径。
             structure (Dict[str, Any]): 目录结构的嵌套字典。
             readme_file (File): 用于写入README内容的文件对象。
             parent_path (str): 父目录路径。
             level (int): 目录的层级，用于确定 README 标题级别。
-
         Returns:
             None
         
     """
-
     heading = "#" * level
-
     for key, value in structure.items():
         current_path = os.path.join(base_path, key.replace(" ", "_").replace("-", "_"))
-
         # 创建目录
         os.makedirs(current_path, exist_ok=True)
-
         # 在README中添加章节标题
         if parent_path:
             readme_file.write(f"{heading} {parent_path}/{key}\n\n")
         else:
             readme_file.write(f"{heading} {key}\n\n")
-
         # 递归调用创建子目录和文件
         if isinstance(value, dict) and value:
             create_directories_and_files(
@@ -420,7 +410,6 @@ def create_directories_and_files(
                 with open(file_path, 'w', encoding='utf-8') as file:
                     file.write(f"# {item}\n\n")
                     file.write(f'"""\n\nLecture: {parent_path}/{key}\nContent: {item}\n\n"""\n\n')
-
                 # 在README中添加文件链接
                 item_clean = item.replace(" ", "_").replace("-", "_")
                 parent_clean = parent_path.replace(" ", "_").replace("-", "_")
@@ -433,27 +422,21 @@ def create_directories_and_files(
             with open(file_path, 'w', encoding='utf-8') as file:
                 file.write(f"# {key}\n\n")
                 file.write(f'"""\nLecture: {parent_path}/{key}\nContent: {key}\n"""\n\n')
-
             # 在README中添加文件链接
             parent_clean = parent_path.replace(" ", "_").replace("-", "_")
             key_clean = key.replace(" ", "_").replace("-", "_")
             readme_file.write(f"- [{key}](./{parent_clean}/{key_clean}/{file_name})\n")
-
         # 添加空行以分隔不同的章节
         readme_file.write("\n")
-
 def main():
     root_dir = './'
     # 创建根目录
     os.makedirs(root_dir, exist_ok=True)
-
     # 创建 README.md 文件
     with open(os.path.join(root_dir, "README.md"), 'w', encoding='utf-8') as readme_file:
         readme_file.write("# 深度学习\n\n")
         readme_file.write("这是一个关于深度学习的目录结构。\n\n")
         create_directories_and_files(root_dir, structure, readme_file)
-
     print("目录和文件结构已生成，并创建 README.md 文件。")
-
 if __name__ == "__main__":
     main()
