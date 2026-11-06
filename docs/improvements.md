@@ -1,0 +1,14 @@
+### 2026-11-06 17:16 UTC — ChatGPT Portfolio Iteration
+- Run ID: portfolio-20261106T171606Z-a63496f2
+- Repo / Base SHA: 1998x-stack/Deep-Learning / 402fe0e1e040f4fb355522ba88c4c2256e0a63ce
+- Historical context: Default-branch docs/improvements.md returned GitHub 404 (first initialization). No PRs found in repository search. Existing lecture modules inspected were docstring-only placeholders.
+- Product problem & expected user value: A learner clicking the norm lesson cannot execute an example or observe numerical stability; the example now calculates the Euclidean norm with no third-party dependency.
+- Engineering diagnosis & evidence: 1_应用数学与机器学习基础/2_线性代数/04_范数.py originally had only a title and docstring; naive sqrt(sum(x*x)) overflows for 1e200 inputs and underflows for 1e-200 inputs.
+- Options & decision: (1) stable L2 norm (P2, score 15); (2) executable cross-validation lesson (P2, score 9, broader design); (3) stable logarithm lesson (P2, score 11). Selected minimal independent numerical demonstration.
+- Changes: Implement l2_norm with math.hypot, executable 3-4-5 example, and five unittest cases. Other lessons and public interfaces unchanged.
+- Validation: A: python -m unittest discover -s /mnt/data/portfolio_run/tests -v (Python container, 5/5 passed); C: python -m py_compile on local matching source and test; D: full repository tests/CI not executed; tests were executed on locally authored matching files, not an independently checked-out remote commit.
+- Security & regression review: No external network, credentials, new dependencies, workflow or deployment changes; inspect GitHub diff before merging.
+- Risk & rollback: Low risk to independent placeholder lesson; revert branch commits or close PR. No default-branch changes authorized until all merge gates verified.
+- Follow-up: Run committed test files from a clean checkout and verify full applicable CI before merge.
+- Commit: pending
+- PR: pending
