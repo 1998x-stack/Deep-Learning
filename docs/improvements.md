@@ -10,5 +10,5 @@
 - Security & regression review: No external network, credentials, new dependencies, workflow or deployment changes; inspect GitHub diff before merging.
 - Risk & rollback: Low risk to independent placeholder lesson; revert branch commits or close PR. No default-branch changes authorized until all merge gates verified.
 - Follow-up: Run committed test files from a clean checkout and verify full applicable CI before merge.
-- Commit: pending
-- PR: pending
+- Commit: 545edb002dbd2a5ff28e1afc00d3be928f33597e (initial history commit; subsequent metadata update changes head SHA)
+- PR: https://github.com/1998x-stack/Deep-Learning/pull/1 (Draft, not merged)
