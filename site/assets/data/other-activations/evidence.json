@@ -2,49 +2,52 @@
   "article": "other-activations",
   "claims": [
     {
-      "id": "other-activations-1",
+      "id": "other-1",
       "claim": "Swish(x)=xσ(βx)",
       "kind": "paper",
-      "locator": "Ramachandran et al. 2017",
+      "locator": "Ramachandran et al., 2017",
       "status": "verified",
-      "source_url": "https://arxiv.org/abs/1710.05941",
-      "notes": "已定位到教材章节或原始论文；推导与事实陈述分开标注。"
+      "source_url": "https://arxiv.org/abs/1710.05941"
     },
     {
-      "id": "other-activations-2",
+      "id": "other-2",
       "claim": "GELU(x)=xΦ(x)",
       "kind": "paper",
-      "locator": "Hendrycks & Gimpel 2016",
+      "locator": "Hendrycks & Gimpel, 2016",
       "status": "verified",
-      "source_url": "https://arxiv.org/abs/1606.08415",
-      "notes": "已定位到教材章节或原始论文；推导与事实陈述分开标注。"
+      "source_url": "https://arxiv.org/abs/1606.08415"
     },
     {
-      "id": "other-activations-3",
-      "claim": "SELU 的自归一化结论依赖条件",
+      "id": "other-3",
+      "claim": "SELU 的自归一化结论依赖论文给定条件",
       "kind": "paper",
-      "locator": "Klambauer et al. 2017",
+      "locator": "Klambauer et al., NeurIPS 2017",
       "status": "verified",
-      "source_url": "https://arxiv.org/abs/1706.02515",
-      "notes": "已定位到教材章节或原始论文；推导与事实陈述分开标注。"
+      "source_url": "https://arxiv.org/abs/1706.02515"
     },
     {
-      "id": "other-activations-4",
+      "id": "other-4",
       "claim": "Mish(x)=x tanh(softplus(x))",
       "kind": "paper",
-      "locator": "Misra 2019",
+      "locator": "Misra, 2019",
       "status": "verified",
-      "source_url": "https://arxiv.org/abs/1908.08681",
-      "notes": "已定位到教材章节或原始论文；推导与事实陈述分开标注。"
+      "source_url": "https://arxiv.org/abs/1908.08681"
     },
     {
-      "id": "other-activations-5",
-      "claim": "原始 Transformer 前馈层使用 ReLU；BERT 使用 GELU",
+      "id": "other-5",
+      "claim": "原始 Transformer 前馈子层使用 ReLU",
       "kind": "paper",
-      "locator": "Vaswani et al. 2017 §3.3；Devlin et al. 2018",
+      "locator": "Vaswani et al., 2017, §3.3",
       "status": "verified",
-      "source_url": "https://arxiv.org/abs/1706.03762",
-      "notes": "已定位到教材章节或原始论文；推导与事实陈述分开标注。"
+      "source_url": "https://arxiv.org/abs/1706.03762"
+    },
+    {
+      "id": "other-6",
+      "claim": "BERT 使用 GELU 激活",
+      "kind": "paper",
+      "locator": "Devlin et al., 2018, Appendix A",
+      "status": "verified",
+      "source_url": "https://arxiv.org/abs/1810.04805"
     }
   ]
 }
