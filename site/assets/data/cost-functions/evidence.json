@@ -1,0 +1,33 @@
+{
+  "article": "cost-functions",
+  "title": "损失函数：模型究竟在优化什么",
+  "claims": [
+    {
+      "id": "cost-functions-1",
+      "claim": "固定方差 Gaussian 回归的 NLL 与 MSE 等价到常数和比例",
+      "kind": "book",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "locator": "§6.2.1.1",
+      "status": "verified",
+      "notes": "按公开教材或论文定位核对；推导单独标注。"
+    },
+    {
+      "id": "cost-functions-2",
+      "claim": "Bernoulli 负对数似然对应 BCE",
+      "kind": "book",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "locator": "§6.2.1.1、§6.2.2.2",
+      "status": "verified",
+      "notes": "按公开教材或论文定位核对；推导单独标注。"
+    },
+    {
+      "id": "cost-functions-3",
+      "claim": "BCE 与 sigmoid-MSE 的 logit 梯度",
+      "kind": "derived",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "locator": "链式法则",
+      "status": "derived",
+      "notes": "按公开教材或论文定位核对；推导单独标注。"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "article": "other-activations",
+  "title": "从 Softplus 到 GELU：其他隐藏单元",
+  "claims": [
+    {
+      "id": "other-activations-1",
+      "claim": "Swish(x)=xσ(βx)",
+      "kind": "paper",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "locator": "Ramachandran et al. 2017",
+      "status": "verified",
+      "notes": "按公开教材或论文定位核对；推导单独标注。"
+    },
+    {
+      "id": "other-activations-2",
+      "claim": "GELU(x)=xΦ(x)",
+      "kind": "paper",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "locator": "Hendrycks & Gimpel 2016",
+      "status": "verified",
+      "notes": "按公开教材或论文定位核对；推导单独标注。"
+    },
+    {
+      "id": "other-activations-3",
+      "claim": "SELU 的自归一化结论依赖条件",
+      "kind": "paper",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "locator": "Klambauer et al. 2017",
+      "status": "verified",
+      "notes": "按公开教材或论文定位核对；推导单独标注。"
+    },
+    {
+      "id": "other-activations-4",
+      "claim": "Mish(x)=x tanh(softplus(x))",
+      "kind": "paper",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "locator": "Misra 2019",
+      "status": "verified",
+      "notes": "按公开教材或论文定位核对；推导单独标注。"
+    }
+  ]
+}

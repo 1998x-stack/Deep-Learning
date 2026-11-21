@@ -1,0 +1,24 @@
+{
+  "article": "hidden-units",
+  "title": "隐藏单元：网络如何学习特征",
+  "claims": [
+    {
+      "id": "hidden-units-1",
+      "claim": "隐藏层的输出不由训练标签逐层指定",
+      "kind": "book",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "locator": "§6.1",
+      "status": "verified",
+      "notes": "按公开教材或论文定位核对；推导单独标注。"
+    },
+    {
+      "id": "hidden-units-2",
+      "claim": "连续仿射映射可合并为一个仿射映射",
+      "kind": "derived",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "locator": "矩阵复合",
+      "status": "derived",
+      "notes": "按公开教材或论文定位核对；推导单独标注。"
+    }
+  ]
+}

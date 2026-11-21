@@ -1,0 +1,33 @@
+{
+  "article": "output-units",
+  "title": "输出单元：把网络结果变成任务答案",
+  "claims": [
+    {
+      "id": "output-units-1",
+      "claim": "输出单元与损失函数紧密耦合",
+      "kind": "book",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "locator": "§6.2.2",
+      "status": "verified",
+      "notes": "按公开教材或论文定位核对；推导单独标注。"
+    },
+    {
+      "id": "output-units-2",
+      "claim": "线性输出可参数化 Gaussian 均值",
+      "kind": "book",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "locator": "§6.2.2.1",
+      "status": "verified",
+      "notes": "按公开教材或论文定位核对；推导单独标注。"
+    },
+    {
+      "id": "output-units-3",
+      "claim": "sigmoid 对应 Bernoulli，softmax 对应互斥多类",
+      "kind": "book",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "locator": "§6.2.2.2–6.2.2.3",
+      "status": "verified",
+      "notes": "按公开教材或论文定位核对；推导单独标注。"
+    }
+  ]
+}

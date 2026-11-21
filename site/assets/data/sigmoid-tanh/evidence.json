@@ -1,0 +1,33 @@
+{
+  "article": "sigmoid-tanh",
+  "title": "Sigmoid 与 Tanh：饱和、梯度和零中心",
+  "claims": [
+    {
+      "id": "sigmoid-tanh-1",
+      "claim": "tanh(z)=2σ(2z)−1",
+      "kind": "book",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "locator": "§6.3.2",
+      "status": "verified",
+      "notes": "按公开教材或论文定位核对；推导单独标注。"
+    },
+    {
+      "id": "sigmoid-tanh-2",
+      "claim": "sigmoid 与 tanh 两端饱和",
+      "kind": "book",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "locator": "§6.3.2",
+      "status": "verified",
+      "notes": "按公开教材或论文定位核对；推导单独标注。"
+    },
+    {
+      "id": "sigmoid-tanh-3",
+      "claim": "sigmoid 饱和与深层网络训练困难的分析",
+      "kind": "paper",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "locator": "Glorot & Bengio 2010",
+      "status": "verified",
+      "notes": "按公开教材或论文定位核对；推导单独标注。"
+    }
+  ]
+}

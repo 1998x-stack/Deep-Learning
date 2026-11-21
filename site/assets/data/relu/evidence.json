@@ -1,0 +1,33 @@
+{
+  "article": "relu",
+  "title": "ReLU：简单分段线性函数为何有效",
+  "claims": [
+    {
+      "id": "relu-1",
+      "claim": "ReLU 在活跃区域导数为 1，非活跃区域为 0",
+      "kind": "book",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "locator": "§6.3.1",
+      "status": "verified",
+      "notes": "按公开教材或论文定位核对；推导单独标注。"
+    },
+    {
+      "id": "relu-2",
+      "claim": "Leaky ReLU 使用非零负斜率",
+      "kind": "book",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "locator": "§6.3.1",
+      "status": "verified",
+      "notes": "按公开教材或论文定位核对；推导单独标注。"
+    },
+    {
+      "id": "relu-3",
+      "claim": "SELU 自归一化依赖特定条件",
+      "kind": "paper",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "locator": "Klambauer et al. 2017",
+      "status": "verified",
+      "notes": "按公开教材或论文定位核对；推导单独标注。"
+    }
+  ]
+}
