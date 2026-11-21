@@ -1,42 +1,50 @@
 {
   "article": "other-activations",
-  "title": "从 Softplus 到 GELU：其他隐藏单元",
   "claims": [
     {
       "id": "other-activations-1",
       "claim": "Swish(x)=xσ(βx)",
       "kind": "paper",
-      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
       "locator": "Ramachandran et al. 2017",
       "status": "verified",
-      "notes": "按公开教材或论文定位核对；推导单独标注。"
+      "source_url": "https://arxiv.org/abs/1710.05941",
+      "notes": "已定位到教材章节或原始论文；推导与事实陈述分开标注。"
     },
     {
       "id": "other-activations-2",
       "claim": "GELU(x)=xΦ(x)",
       "kind": "paper",
-      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
       "locator": "Hendrycks & Gimpel 2016",
       "status": "verified",
-      "notes": "按公开教材或论文定位核对；推导单独标注。"
+      "source_url": "https://arxiv.org/abs/1606.08415",
+      "notes": "已定位到教材章节或原始论文；推导与事实陈述分开标注。"
     },
     {
       "id": "other-activations-3",
       "claim": "SELU 的自归一化结论依赖条件",
       "kind": "paper",
-      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
       "locator": "Klambauer et al. 2017",
       "status": "verified",
-      "notes": "按公开教材或论文定位核对；推导单独标注。"
+      "source_url": "https://arxiv.org/abs/1706.02515",
+      "notes": "已定位到教材章节或原始论文；推导与事实陈述分开标注。"
     },
     {
       "id": "other-activations-4",
       "claim": "Mish(x)=x tanh(softplus(x))",
       "kind": "paper",
-      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
       "locator": "Misra 2019",
       "status": "verified",
-      "notes": "按公开教材或论文定位核对；推导单独标注。"
+      "source_url": "https://arxiv.org/abs/1908.08681",
+      "notes": "已定位到教材章节或原始论文；推导与事实陈述分开标注。"
+    },
+    {
+      "id": "other-activations-5",
+      "claim": "原始 Transformer 前馈层使用 ReLU；BERT 使用 GELU",
+      "kind": "paper",
+      "locator": "Vaswani et al. 2017 §3.3；Devlin et al. 2018",
+      "status": "verified",
+      "source_url": "https://arxiv.org/abs/1706.03762",
+      "notes": "已定位到教材章节或原始论文；推导与事实陈述分开标注。"
     }
   ]
 }

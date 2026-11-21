@@ -1,24 +1,23 @@
 {
   "article": "gradient",
-  "title": "梯度下降：参数如何一步步学会",
   "claims": [
     {
       "id": "gradient-1",
-      "claim": "深度网络通常依赖迭代式梯度优化",
+      "claim": "神经网络训练通常依赖迭代式梯度优化",
       "kind": "book",
-      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
       "locator": "§6.2",
       "status": "verified",
-      "notes": "按公开教材或论文定位核对；推导单独标注。"
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "notes": "已定位到教材章节或原始论文；推导与事实陈述分开标注。"
     },
     {
       "id": "gradient-2",
       "claim": "反向传播利用链式法则计算梯度",
       "kind": "book",
-      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
       "locator": "§6.5",
       "status": "verified",
-      "notes": "按公开教材或论文定位核对；推导单独标注。"
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "notes": "已定位到教材章节或原始论文；推导与事实陈述分开标注。"
     }
   ]
 }

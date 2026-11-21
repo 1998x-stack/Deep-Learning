@@ -1,24 +1,23 @@
 {
   "article": "xor",
-  "title": "从 XOR 看懂前馈神经网络",
   "claims": [
     {
       "id": "xor-1",
-      "claim": "线性模型不能表示 XOR 的单一线性分隔",
+      "claim": "XOR 不能由单个线性决策边界表示",
       "kind": "book",
-      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
       "locator": "§6.1",
       "status": "verified",
-      "notes": "按公开教材或论文定位核对；推导单独标注。"
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "notes": "已定位到教材章节或原始论文；推导与事实陈述分开标注。"
     },
     {
       "id": "xor-2",
       "claim": "两个 ReLU 单元在四个二值输入上精确表示 XOR",
       "kind": "derived",
-      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
       "locator": "逐点代入",
       "status": "derived",
-      "notes": "按公开教材或论文定位核对；推导单独标注。"
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "notes": "已定位到教材章节或原始论文；推导与事实陈述分开标注。"
     }
   ]
 }
