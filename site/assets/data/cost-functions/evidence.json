@@ -1,0 +1,32 @@
+{
+  "article": "cost-functions",
+  "claims": [
+    {
+      "id": "cost-functions-1",
+      "claim": "固定方差 Gaussian 回归的 NLL 与 MSE 等价到常数和比例",
+      "kind": "book",
+      "locator": "§6.2.1.1",
+      "status": "verified",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "notes": "已定位到教材章节或原始论文；推导与事实陈述分开标注。"
+    },
+    {
+      "id": "cost-functions-2",
+      "claim": "Bernoulli 负对数似然对应 BCE",
+      "kind": "book",
+      "locator": "§6.2.1.1、§6.2.2.2",
+      "status": "verified",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "notes": "已定位到教材章节或原始论文；推导与事实陈述分开标注。"
+    },
+    {
+      "id": "cost-functions-3",
+      "claim": "BCE 与 sigmoid-MSE 的 logit 梯度",
+      "kind": "derived",
+      "locator": "链式法则",
+      "status": "derived",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "notes": "已定位到教材章节或原始论文；推导与事实陈述分开标注。"
+    }
+  ]
+}

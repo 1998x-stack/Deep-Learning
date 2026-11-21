@@ -1,139 +1,140 @@
-# 06_logistic sigmoid 与双曲正切函数
-"""
-Lecture: 2_深度网络：现代实践/6_深度前馈网络
-Content: 06_logistic sigmoid 与双曲正切函数
-"""
-## 06_logistic sigmoid 与双曲正切函数
-### 任务分解：
-1. **背景介绍**
-2. **Logistic Sigmoid 函数的定义**
-3. **双曲正切函数（Tanh）的定义**
-4. **Logistic Sigmoid 与 Tanh 的优缺点**
-5. **Logistic Sigmoid 与 Tanh 的应用场景**
-6. **实现 Logistic Sigmoid 和 Tanh 函数**
-7. **训练和评估模型**
-8. **可视化 Logistic Sigmoid 与 Tanh 函数**
-### 1. 背景介绍
-**步骤：**
-- 解释激活函数在神经网络中的作用。
-- 强调 Logistic Sigmoid 和 Tanh 函数的重要性及其应用场景。
-**解释：**
-激活函数是神经网络中的关键组件，用于引入非线性，使网络能够学习复杂的模式和特征。Logistic Sigmoid 和双曲正切（Tanh）函数是两种常用的激活函数，广泛应用于早期的神经网络模型中。
-### 2. Logistic Sigmoid 函数的定义
-**步骤：**
-- 提供 Logistic Sigmoid 函数的数学定义。
-- 说明 Logistic Sigmoid 如何在神经网络中进行信息处理。
-**解释：**
-Logistic Sigmoid 函数的数学定义为：
-$$ f(x) = \frac{1}{1 + e^{-x}} $$
-它将输入值压缩到 [0, 1] 之间，使得输出可以被解释为概率值。
-### 3. 双曲正切函数（Tanh）的定义
-**步骤：**
-- 提供双曲正切函数（Tanh）的数学定义。
-- 说明 Tanh 如何在神经网络中进行信息处理。
-**解释：**
-双曲正切（Tanh）函数的数学定义为：
-$$ f(x) = \tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}} $$
-它将输入值压缩到 [-1, 1] 之间，相对于 Logistic Sigmoid，Tanh 在输出上具有零中心性。
-### 4. Logistic Sigmoid 与 Tanh 的优缺点
-**步骤：**
-- 介绍 Logistic Sigmoid 和 Tanh 的主要优点。
-- 讨论 Logistic Sigmoid 和 Tanh 的潜在缺点。
-**解释：**
-- **Logistic Sigmoid 优点**：
-  - 简单易计算
-  - 输出值在 [0, 1] 之间，易于解释为概率
-  
-- **Logistic Sigmoid 缺点**：
-  - 梯度消失问题：在输入绝对值较大时，梯度接近于零，导致训练速度变慢
-  
-- **Tanh 优点**：
-  - 输出范围为 [-1, 1]，具有零中心性，更有利于梯度下降
-  - 在某些情况下表现优于 Logistic Sigmoid
-  
-- **Tanh 缺点**：
-  - 同样存在梯度消失问题，特别是在深层网络中
-### 5. Logistic Sigmoid 与 Tanh 的应用场景
-**步骤：**
-- 讨论 Logistic Sigmoid 和 Tanh 的适用场景。
-- 说明何时选择使用 Logistic Sigmoid 或 Tanh。
-**解释：**
-- Logistic Sigmoid 适用于输出需要表示为概率的场景，如二分类问题的输出层。
-- Tanh 适用于隐藏层，尤其是在需要零中心化输出的情况下，相比 Logistic Sigmoid 更能帮助网络更快地收敛。
-### 6. 实现 Logistic Sigmoid 和 Tanh 函数
-**步骤：**
-- 使用 PyTorch 实现 Logistic Sigmoid 和 Tanh 函数。
-- 演示如何在神经网络中使用这些激活函数。
-**代码：**
-```python
+# Sigmoid 与 Tanh：饱和、梯度和零中心
+
+> 两个经典 S 形函数，是理解梯度消失的入口。
+
+Sigmoid 与 tanh 都把输入压缩到有限区间；它们的输出范围、导数和适用位置各不相同。
+
+网页交互版：[Sigmoid 与 Tanh：饱和、梯度和零中心](https://1998x-stack.github.io/Deep-Learning/articles/sigmoid-tanh/)
+
+证据账本：[evidence.json](../../../site/assets/data/sigmoid-tanh/evidence.json)
+
+## 学习目标
+
+- 解释核心机制及适用边界。
+- 把公式与计算图、数值示例对应起来。
+- 通过独立 SVG 图示复核关键步骤。
+- 使用配套 Python 例子核对核心计算。
+
+## 1. 1. 输出范围不同
+
+sigmoid 将实数映射到 (0,1)，适合表示 Bernoulli 概率；tanh 映射到 (−1,1)，输出以 0 为中心。
+
+$$
+σ(z)∈(0,1),tanh(z)∈(−1,1)
+$$
+
+![图 1：1. 输出范围不同](../../../site/assets/svg/sigmoid-tanh/fig-01.svg)
+
+**图解：** 图 1. tanh 跨越 0，sigmoid 位于 0 到 1。
+
+## 2. 2. 导数在中心附近最大
+
+sigmoid′=σ(1−σ)，最大值 1/4；tanh′=1−tanh²，最大值 1。两者在 z=0 附近最敏感。
+
+$$
+σ′=σ(1−σ)tanh′=1−tanh2
+$$
+
+![图 2：2. 导数在中心附近最大](../../../site/assets/svg/sigmoid-tanh/fig-02.svg)
+
+**图解：** 图 2. 导数在中心大，两端趋近于零。
+
+## 3. 3. 饱和区削弱梯度
+
+输入绝对值很大时，sigmoid 和 tanh 的曲线趋近平坦，导数接近零。多层链式相乘可能使靠近输入的层得到很弱梯度；权重尺度与架构也同样重要。
+
+$$
+∂h∂x=∏l=1Lφ′(zl)Wl
+$$
+
+![图 3：3. 饱和区削弱梯度](../../../site/assets/svg/sigmoid-tanh/fig-03.svg)
+
+**图解：** 图 3. 输出层 sigmoid 有清楚的概率解释。
+
+## 4. 4. Tanh 是缩放平移后的 sigmoid
+
+两者满足 tanh(z)=2σ(2z)−1。tanh 的零中心输出可能让后续层接收正负都有的表示，但不能据此保证所有模型都收敛更快。
+
+$$
+tanh(z)=2σ(2z)−1
+$$
+
+![图 4：4. Tanh 是缩放平移后的 sigmoid](../../../site/assets/svg/sigmoid-tanh/fig-04.svg)
+
+**图解：** 图 4. 饱和会降低局部梯度幅度。
+
+## 5. 5. Sigmoid 常用于二分类输出
+
+输出层 sigmoid 将一个 logit 转为 Bernoulli 正类概率。隐藏层 sigmoid 则不一定有概率语义，深层饱和可能削弱梯度。
+
+$$
+p(y=1|x)=σ(a)
+$$
+
+![图 5：5. Sigmoid 常用于二分类输出](../../../site/assets/svg/sigmoid-tanh/fig-05.svg)
+
+**图解：** 图 5. tanh 输出有正有负。
+
+## 6. 6. Tanh 仍适合有界正负状态
+
+tanh 常用于需要有界状态的结构，例如部分循环网络候选状态。它输出正负值，但在两端同样会饱和。
+
+$$
+h=tanh(a)∈(−1,1)
+$$
+
+![图 6：6. Tanh 仍适合有界正负状态](../../../site/assets/svg/sigmoid-tanh/fig-06.svg)
+
+**图解：** 图 6. 梯度消失是多因素共同作用。
+
+## 7. 7. 初始化影响饱和概率
+
+权重尺度过大时，预激活可能频繁落在饱和区。Glorot/Xavier 初始化旨在让层间信号尺度更合理，帮助缓解深层网络训练困难。
+
+$$
+Var(W)=2fanin+fanout
+$$
+
+![图 7：7. 初始化影响饱和概率](../../../site/assets/svg/sigmoid-tanh/fig-07.svg)
+
+**图解：** 图 7. 函数放在不同层，语义也不同。
+
+## 8. 8. 选择时同时看语义与梯度
+
+需要概率时 sigmoid 有自然解释；需要有界、零中心状态时可考虑 tanh；深层隐藏层通常先比较 ReLU 家族。最终要结合初始化、输入尺度和验证集。
+
+$$
+选择={范围,导数,位置,初始化}
+$$
+
+![图 8：8. 选择时同时看语义与梯度](../../../site/assets/svg/sigmoid-tanh/fig-08.svg)
+
+**图解：** 图 8. 激活需要与初始化和输入尺度一起考虑。
+
+## 可运行示例
+
+网页版本提供交互实验。下面代码展示核心计算；完整独立脚本位于本目录对应 Python 文件。
+
+~~~python
 import torch
-import torch.nn as nn
-import torch.optim as optim
-import numpy as np
-# 定义神经网络模型
-class SimpleNN(nn.Module):
-    def __init__(self, activation='sigmoid'):
-        super(SimpleNN, self).__init__()
-        self.fc1 = nn.Linear(2, 2)
-        if activation == 'sigmoid':
-            self.activation = nn.Sigmoid()
-        elif activation == 'tanh':
-            self.activation = nn.Tanh()
-        self.fc2 = nn.Linear(2, 1)
-        self.output = nn.Sigmoid()  # 假设是一个二分类问题
-    def forward(self, x):
-        x = self.activation(self.fc1(x))
-        x = self.fc2(x)
-        return self.output(x)
-# 初始化模型
-model = SimpleNN(activation='tanh')
-# 定义损失函数和优化器
-criterion = nn.BCELoss()
-optimizer = optim.SGD(model.parameters(), lr=0.1)
-# 准备数据
-X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
-y = np.array([[0], [1], [1], [0]])
-# 训练模型
-epochs = 10000
-losses = []
-for epoch in range(epochs):
-    # 前向传播
-    outputs = model(torch.tensor(X, dtype=torch.float))
-    loss = criterion(outputs, torch.tensor(y, dtype=torch.float))
-    losses.append(loss.item())
-    
-    # 反向传播和优化
-    optimizer.zero_grad()
-    loss.backward()
-    optimizer.step()
-    
-    if (epoch+1) % 1000 == 0:
-        print(f'Epoch [{epoch+1}/{epochs}], Loss: {loss.item():.4f}')
-# 评估模型
-with torch.no_grad():
-    predicted = model(torch.tensor(X, dtype=torch.float)).round()
-    accuracy = (predicted.numpy() == y).mean()
-    print(f'Accuracy: {accuracy * 100:.2f}%')
-```
-### 7. 训练和评估模型
-**步骤：**
-- 训练模型并记录损失。
-- 评估模型在训练数据上的准确性。
-**代码：**
-```python
-# 训练和评估模型的代码已包含在上一步中
-```
-### 8. 可视化 Logistic Sigmoid 与 Tanh 函数
-**步骤：**
-- 可视化不同激活函数的输出。
-- 展示不同激活函数在训练过程中的表现差异。
-**代码：**
-```python
-import matplotlib.pyplot as plt
-# 可视化训练损失
-plt.plot(losses)
-plt.xlabel('Epoch')
-plt.ylabel('Loss')
-plt.title('Training Loss with Tanh Activation Function')
-plt.show()
-```
+z=torch.tensor([-6.,-2.,0.,2.,6.])
+print(torch.sigmoid(z))
+print(torch.tanh(z))
+~~~
+
+## 参考资料
+
+- [输出范围不同](#s1)
+- [导数在中心附近最大](#s2)
+- [饱和区削弱梯度](#s3)
+- [Tanh 是缩放平移后的 sigmoid](#s4)
+- [Sigmoid 常用于二分类输出](#s5)
+- [Tanh 仍适合有界正负状态](#s6)
+- [初始化影响饱和概率](#s7)
+- [选择时同时看语义与梯度](#s8)
+- [Deep Learning, Goodfellow et al., Chapter 6.3.2](https://www.deeplearningbook.org/contents/mlp.html)
+- [Glorot & Bengio, AISTATS 2010](https://proceedings.mlr.press/v9/glorot10a)
+
+## 证据边界
+
+教材事实、原始论文结果和本页推导分别记录在 evidence.json 中。教学示例不等同于完整基准复现；不要把单一示例外推为普遍性能结论。

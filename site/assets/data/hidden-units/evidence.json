@@ -1,0 +1,23 @@
+{
+  "article": "hidden-units",
+  "claims": [
+    {
+      "id": "hidden-units-1",
+      "claim": "隐藏层的输出不由训练标签逐层指定",
+      "kind": "book",
+      "locator": "§6.1",
+      "status": "verified",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "notes": "已定位到教材章节或原始论文；推导与事实陈述分开标注。"
+    },
+    {
+      "id": "hidden-units-2",
+      "claim": "连续仿射映射可合并为一个仿射映射",
+      "kind": "derived",
+      "locator": "矩阵复合",
+      "status": "derived",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "notes": "已定位到教材章节或原始论文；推导与事实陈述分开标注。"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "article": "relu",
+  "claims": [
+    {
+      "id": "relu-1",
+      "claim": "ReLU 在活跃区域导数为 1，非活跃区域为 0",
+      "kind": "book",
+      "locator": "Goodfellow et al., §6.3.1",
+      "status": "verified",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html"
+    },
+    {
+      "id": "relu-2",
+      "claim": "Leaky ReLU 在负半轴保留非零斜率",
+      "kind": "book",
+      "locator": "Goodfellow et al., §6.3.1",
+      "status": "verified",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html"
+    },
+    {
+      "id": "relu-3",
+      "claim": "He 初始化的方差尺度考虑了 ReLU 类激活",
+      "kind": "paper",
+      "locator": "He et al., 2015, §2",
+      "status": "verified",
+      "source_url": "https://arxiv.org/abs/1502.01852"
+    },
+    {
+      "id": "relu-4",
+      "claim": "SELU 的自归一化性质依赖特定网络与初始化条件",
+      "kind": "paper",
+      "locator": "Klambauer et al., NeurIPS 2017",
+      "status": "verified",
+      "source_url": "https://proceedings.neurips.cc/paper_files/paper/2017/hash/5d44ee6f2c3f71b73125876103c8f6c4-Abstract.html"
+    }
+  ]
+}

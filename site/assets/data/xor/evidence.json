@@ -1,0 +1,23 @@
+{
+  "article": "xor",
+  "claims": [
+    {
+      "id": "xor-1",
+      "claim": "XOR 不能由单个线性决策边界表示",
+      "kind": "book",
+      "locator": "§6.1",
+      "status": "verified",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "notes": "已定位到教材章节或原始论文；推导与事实陈述分开标注。"
+    },
+    {
+      "id": "xor-2",
+      "claim": "两个 ReLU 单元在四个二值输入上精确表示 XOR",
+      "kind": "derived",
+      "locator": "逐点代入",
+      "status": "derived",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "notes": "已定位到教材章节或原始论文；推导与事实陈述分开标注。"
+    }
+  ]
+}

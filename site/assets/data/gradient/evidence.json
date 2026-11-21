@@ -1,0 +1,23 @@
+{
+  "article": "gradient",
+  "claims": [
+    {
+      "id": "gradient-1",
+      "claim": "神经网络训练通常依赖迭代式梯度优化",
+      "kind": "book",
+      "locator": "§6.2",
+      "status": "verified",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "notes": "已定位到教材章节或原始论文；推导与事实陈述分开标注。"
+    },
+    {
+      "id": "gradient-2",
+      "claim": "反向传播利用链式法则计算梯度",
+      "kind": "book",
+      "locator": "§6.5",
+      "status": "verified",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "notes": "已定位到教材章节或原始论文；推导与事实陈述分开标注。"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "article": "output-units",
+  "claims": [
+    {
+      "id": "output-units-1",
+      "claim": "输出单元与损失函数紧密耦合",
+      "kind": "book",
+      "locator": "§6.2.2",
+      "status": "verified",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "notes": "已定位到教材章节或原始论文；推导与事实陈述分开标注。"
+    },
+    {
+      "id": "output-units-2",
+      "claim": "线性输出可参数化 Gaussian 均值",
+      "kind": "book",
+      "locator": "§6.2.2.1",
+      "status": "verified",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "notes": "已定位到教材章节或原始论文；推导与事实陈述分开标注。"
+    },
+    {
+      "id": "output-units-3",
+      "claim": "sigmoid 对应 Bernoulli，softmax 对应互斥多类",
+      "kind": "book",
+      "locator": "§6.2.2.2–6.2.2.3",
+      "status": "verified",
+      "source_url": "https://www.deeplearningbook.org/contents/mlp.html",
+      "notes": "已定位到教材章节或原始论文；推导与事实陈述分开标注。"
+    }
+  ]
+}

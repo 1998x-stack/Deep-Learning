@@ -1,117 +1,140 @@
-# 00_实例：学习 XOR
-"""
-Lecture: 2_深度网络：现代实践/6_深度前馈网络
-Content: 00_实例：学习 XOR
-"""
-## 00_实例：学习 XOR
-### 任务分解：
-1. **背景介绍**
-2. **准备数据**
-3. **构建神经网络模型**
-4. **训练模型**
-5. **评估模型**
-6. **可视化结果**
-### 1. 背景介绍
-**步骤：**
-- 解释 XOR 问题的定义及其在逻辑运算中的作用。
-- 说明为什么 XOR 问题对于神经网络训练是一个经典且重要的实例。
-**解释：**
-XOR（异或）是一个简单的逻辑运算，它的输出只有在输入不同时才为真（1）。具体的真值表如下：
-| 输入 A | 输入 B | 输出 A XOR B |
-| ------ | ------ | ------------ |
-|   0    |   0    |      0       |
-|   0    |   1    |      1       |
-|   1    |   0    |      1       |
-|   1    |   1    |      0       |
-XOR 问题是非线性可分的，这意味着无法通过简单的线性模型（如感知器）解决。因此，使用多层神经网络（如深度前馈网络）来解决这个问题是展示神经网络强大功能的一个经典案例。
-### 2. 准备数据
-**步骤：**
-- 导入必要的库
-- 创建 XOR 数据集
-**代码：**
-```python
-import numpy as np
-# XOR 输入和输出
-X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
-y = np.array([[0], [1], [1], [0]])
-```
-### 3. 构建神经网络模型
-**步骤：**
-- 使用 PyTorch 构建一个简单的前馈神经网络
-- 定义网络的层次结构
-**代码：**
-```python
+# 从 XOR 看懂前馈神经网络
+
+> 为什么一条直线不够，而两个隐藏单元就能改变表示空间？
+
+XOR 只有四种输入，却揭示了线性模型的表达边界。理解它，就能理解隐藏层为什么不是简单地多加几层。
+
+网页交互版：[从 XOR 看懂前馈神经网络](https://1998x-stack.github.io/Deep-Learning/articles/xor/)
+
+证据账本：[evidence.json](../../../site/assets/data/xor/evidence.json)
+
+## 学习目标
+
+- 解释核心机制及适用边界。
+- 把公式与计算图、数值示例对应起来。
+- 通过独立 SVG 图示复核关键步骤。
+- 使用配套 Python 例子核对核心计算。
+
+## 1. 1. 四行真值表
+
+异或在两个输入不同时输出 1，相同时输出 0。四个样本已经完整定义了这个小任务；本例只验证拟合这四点，不代表泛化能力。
+
+$$
+y=x1⊕x2
+$$
+
+![图 1：1. 四行真值表](../../../site/assets/svg/xor/fig-01.svg)
+
+**图解：** 图 1. 四行数据已经完整定义 XOR。
+
+## 2. 2. 线性模型为什么失败
+
+正类点 (0,1)、(1,0) 与负类点 (0,0)、(1,1) 交错分布。任何一条直线都不能把两类同时分开；这属于模型表达能力不足，不是训练轮数不足。
+
+$$
+f(x)=w⊤x+b
+$$
+
+![图 2：2. 线性模型为什么失败](../../../site/assets/svg/xor/fig-02.svg)
+
+**图解：** 图 2. 两类点位于对角线，单条直线无法分开。
+
+## 3. 3. 隐藏层学习新表示
+
+多层感知机先把输入映射到隐藏表示，再由输出层分类。隐藏层没有逐层人工标签，它的参数由最终任务共同训练。
+
+$$
+h=f(1)(x),y=f(2)(h)
+$$
+
+![图 3：3. 隐藏层学习新表示](../../../site/assets/svg/xor/fig-03.svg)
+
+**图解：** 图 3. 隐藏层把原输入变成更容易区分的表示。
+
+## 4. 4. 非线性是关键
+
+若每一层都只是仿射变换，连续组合仍可合并为一个仿射变换。真正改变表达能力的是中间的非线性激活函数。
+
+$$
+h=φ(Wx+b)
+$$
+
+![图 4：4. 非线性是关键](../../../site/assets/svg/xor/fig-04.svg)
+
+**图解：** 图 4. 增加层数不够，还需要非线性激活。
+
+## 5. 5. 两个 ReLU 单元的精确构造
+
+对二值输入，h₁=ReLU(x₁−x₂)，h₂=ReLU(x₂−x₁)，输出 h₁+h₂。逐点代入得到 0、1、1、0；这是一个可核验构造，不是训练过程必然学到的权重。
+
+$$
+ŷ=max(0,x1−x2)+max(0,x2−x1)
+$$
+
+![图 5：5. 两个 ReLU 单元的精确构造](../../../site/assets/svg/xor/fig-05.svg)
+
+**图解：** 图 5. 两个隐藏单元分别检测输入差值的方向。
+
+## 6. 6. 前向传播计算预测
+
+输入经过仿射变换、激活函数和输出层，得到预测。前向传播负责计算预测与损失，不负责更新参数。
+
+$$
+a=Wx+b,h=φ(a)
+$$
+
+![图 6：6. 前向传播计算预测](../../../site/assets/svg/xor/fig-06.svg)
+
+**图解：** 图 6. 前向传播按计算图依赖顺序执行。
+
+## 7. 7. 损失与泛化是两回事
+
+四个训练点预测正确，只说明这个网络拟合了这四个点。Goodfellow 等人在入门示例中用 MSE 简化推导，同时提醒 MSE 通常不是建模二值数据的首选。
+
+$$
+J=14∑x∈X(y−f(x))2
+$$
+
+![图 7：7. 损失与泛化是两回事](../../../site/assets/svg/xor/fig-07.svg)
+
+**图解：** 图 7. 隐藏表示把原空间的交错关系编码出来。
+
+## 8. 8. 从 XOR 带走三个结论
+
+隐藏层学习表示；非线性改变函数族；优化算法只能在既定函数族中寻找参数。下一篇转向梯度如何驱动参数更新。
+
+$$
+f(x)=f(2)(f(1)(x))
+$$
+
+![图 8：8. 从 XOR 带走三个结论](../../../site/assets/svg/xor/fig-08.svg)
+
+**图解：** 图 8. 训练点正确不等于未知数据表现有保证。
+
+## 可运行示例
+
+网页版本提供交互实验。下面代码展示核心计算；完整独立脚本位于本目录对应 Python 文件。
+
+~~~python
 import torch
-import torch.nn as nn
-import torch.optim as optim
-# 定义神经网络模型
-class XORModel(nn.Module):
-    def __init__(self):
-        super(XORModel, self).__init__()
-        self.fc1 = nn.Linear(2, 2)
-        self.fc2 = nn.Linear(2, 1)
-        self.sigmoid = nn.Sigmoid()
-    def forward(self, x):
-        x = self.sigmoid(self.fc1(x))
-        x = self.sigmoid(self.fc2(x))
-        return x
-model = XORModel()
-```
-### 4. 训练模型
-**步骤：**
-- 定义损失函数和优化器
-- 训练模型并记录损失
-**代码：**
-```python
-# 损失函数和优化器
-criterion = nn.BCELoss()
-optimizer = optim.SGD(model.parameters(), lr=0.1)
-# 训练模型
-epochs = 10000
-for epoch in range(epochs):
-    # 前向传播
-    outputs = model(torch.tensor(X, dtype=torch.float))
-    loss = criterion(outputs, torch.tensor(y, dtype=torch.float))
-    
-    # 反向传播和优化
-    optimizer.zero_grad()
-    loss.backward()
-    optimizer.step()
-    
-    if (epoch+1) % 1000 == 0:
-        print(f'Epoch [{epoch+1}/{epochs}], Loss: {loss.item():.4f}')
-```
-### 5. 评估模型
-**步骤：**
-- 计算模型在训练数据上的准确性
-**代码：**
-```python
-# 评估模型
-with torch.no_grad():
-    predicted = model(torch.tensor(X, dtype=torch.float)).round()
-    accuracy = (predicted.numpy() == y).mean()
-    print(f'Accuracy: {accuracy * 100:.2f}%')
-```
-### 6. 可视化结果
-**步骤：**
-- 可视化训练损失的变化
-- 展示模型在不同输入下的输出
-**代码：**
-```python
-import matplotlib.pyplot as plt
-# 可视化训练损失
-losses = []
-for epoch in range(epochs):
-    outputs = model(torch.tensor(X, dtype=torch.float))
-    loss = criterion(outputs, torch.tensor(y, dtype=torch.float))
-    losses.append(loss.item())
-    optimizer.zero_grad()
-    loss.backward()
-    optimizer.step()
-plt.plot(losses)
-plt.xlabel('Epoch')
-plt.ylabel('Loss')
-plt.title('Training Loss')
-plt.show()
-```
-通过以上步骤，我们完成了 XOR 问题的神经网络解决方案。每一步都详细解释了背后的逻辑和实现细节。
+import torch.nn.functional as F
+x=torch.tensor([[0.,0.],[0.,1.],[1.,0.],[1.,1.]])
+h1=F.relu(x[:,0]-x[:,1]); h2=F.relu(x[:,1]-x[:,0])
+print(h1+h2)  # tensor([0., 1., 1., 0.])
+~~~
+
+## 参考资料
+
+- [四行真值表](#s1)
+- [线性模型为什么失败](#s2)
+- [隐藏层学习新表示](#s3)
+- [非线性是关键](#s4)
+- [两个 ReLU 单元的精确构造](#s5)
+- [前向传播计算预测](#s6)
+- [损失与泛化是两回事](#s7)
+- [从 XOR 带走三个结论](#s8)
+- [Deep Learning, Goodfellow et al., Chapter 6.1](https://www.deeplearningbook.org/contents/mlp.html)
+
+## 证据边界
+
+教材事实、原始论文结果和本页推导分别记录在 evidence.json 中。教学示例不等同于完整基准复现；不要把单一示例外推为普遍性能结论。
