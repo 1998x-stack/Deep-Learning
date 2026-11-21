@@ -34,7 +34,10 @@ def main():
     else: control.evaluate("x=>{x.value=String(Number(x.value)+Number(x.step||.1));x.dispatchEvent(new Event('input',{bubbles:true}))}")
     page.wait_for_timeout(50); after=page.locator("[data-demo-output]").inner_text()
     result.update({"broken_svg":broken,"interaction_changed":before!=after,"console_errors":errors})
+    page.set_viewport_size({"width":1440,"height":1000}); page.wait_for_timeout(80)
     page.screenshot(path=str(out/f"{slug}-1440.png"),full_page=True)
+    page.set_viewport_size({"width":390,"height":900}); page.wait_for_timeout(80)
+    page.screenshot(path=str(out/f"{slug}-390.png"),full_page=True)
     if result["svg_count"]<8 or broken or before==after or errors: report["status"]="failed"
     report["articles"][slug]=result; page.close()
    browser.close()
